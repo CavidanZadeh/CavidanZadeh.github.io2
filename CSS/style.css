@@ -158,6 +158,25 @@ a, .icon-link, .footer-link, .nav a{ cursor:pointer; }
 .timeline-item::before{ content:''; position:absolute; left:-4px; top:6px; width:12px; height:12px; border-radius:50%; background:#0b5cff; border:3px solid #fff; box-shadow:0 2px 6px rgba(11,92,255,0.12); }
 .timeline-item time{ display:block; font-size:0.85rem; color:#666; margin-bottom:6px; }
 
+/* Ensure timeline clears floated about/education columns */
+.timeline-section{ clear:both; }
+
+/* Normalize spacing inside timeline paragraphs to avoid large gaps */
+.timeline .timeline-item p{
+  white-space:normal;
+  word-spacing:normal;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+
+/* Force left alignment inside timeline paragraphs to avoid large justification gaps */
+.timeline .timeline-item p{
+  text-align:left !important;
+  -webkit-hyphens:auto;
+  -ms-hyphens:auto;
+  hyphens:auto;
+}
+
 /* Quote */
 .quote{ background:linear-gradient(90deg,#f0f8ff,#ffffff); border-left:4px solid #0b5cff; padding:14px; font-style:italic; color:#123; }
 
@@ -241,4 +260,49 @@ a:focus, .nav a:focus{ outline:3px solid rgba(11,92,255,0.12); outline-offset:3p
   .nav a{ font-size:0.95rem; }
   .project-image{ height:140px; }
 }
+
+/* --- Visual-lite enhancements: split layouts, subtle accents, and wide-column reading --- */
+
+/* 1) Intro split (index): image left, text right on tablet+ */
+@media (min-width:768px){
+  .intro{ display:grid; grid-template-columns:220px 1fr; gap:22px; align-items:center; }
+  .intro .profile-image{ margin:0; }
+}
+
+/* 2) About page: present About + Education side-by-side on tablet/desktop (limited to two sections) */
+@media (min-width:768px){
+  .about-me, .education{ width:48%; float:left; }
+  .about-me{ margin-right:4%; }
+  /* keep internal padding consistent */
+  .about-me, .education{ box-sizing:border-box; }
+}
+/* clear floats on smaller viewports */
+@media (max-width:767px){
+  .about-me, .education{ float:none; width:auto; margin-right:0; }
+}
+
+/* 3) Timeline readability: (multi-column removed due to layout issues at wide widths) */
+
+/* 4) Projects: subtle alternating card rhythm to break text walls */
+.projects-list .project:nth-child(odd) .project-card,
+.projects-list .project:nth-child(odd){ background: rgba(11,92,255,0.03); }
+.projects-list .project{ padding:10px; border-radius:10px; }
+
+/* 5) Section accent strips (very subtle) - alternate small accents for rhythm */
+@media (min-width:768px){
+  .student-goals::before, .learning-journey::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:6px; background:rgba(11,92,255,0.04); border-radius:4px; }
+  .student-goals, .learning-journey{ position:relative; padding-left:14px; }
+}
+
+/* Ensure accents and splits do not affect mobile single-column feel */
+@media (max-width:767px){
+  .student-goals::before, .learning-journey::before{ display:none; }
+}
+
+/* Accessibility: ensure increased padding for touch targets on mobile for nav and tags */
+@media (max-width:600px){
+  .nav a{ padding:12px 14px; }
+  .tag{ padding:8px 10px; }
+}
+
 
