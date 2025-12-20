@@ -237,7 +237,7 @@ body{
 a:focus, .nav a:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4px; }
 
 /* Fade-in-up reveal (used by js/ui.js) */
-.fade-in{ opacity:0; transform:translateY(18px); transition: opacity 520ms ease, transform 520ms cubic-bezier(.2,.9,.2,1); }
+.fade-in{ opacity:1; transform:none; transition: opacity 520ms ease, transform 520ms cubic-bezier(.2,.9,.2,1); }
 .fade-in.in-view{ opacity:1; transform:translateY(0); }
 
 /* Responsive tweaks */
