@@ -238,6 +238,22 @@ body{
 .footer-left p.statement{ margin:0 0 8px 0; color:var(--muted); font-size:0.95rem; }
 .footer-right a{ color:var(--brand-deep); }
 
+/* Footer link & icon polish: remove heavy native underline, stabilize visited state,
+   and provide subtle focus styles for accessibility. Conservative, palette-preserving. */
+.footer-link{
+  text-decoration:none;
+  color:var(--brand-deep);
+  font-weight:700;
+  display:inline-block;
+  padding-bottom:4px;
+  border-bottom:2px solid transparent;
+  transition: border-color .18s ease, color .18s ease;
+}
+.footer-link:visited{ color:var(--brand-deep); }
+.footer-link:hover, .footer-link:focus{ border-bottom-color: rgba(45,69,209,0.18); text-decoration:none; }
+.icon-link{ text-decoration:none; color:var(--brand-deep); display:inline-flex; align-items:center; justify-content:center; }
+.icon-link:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4px; border-radius:6px; }
+
 /* Focus states */
 a:focus, .nav a:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4px; }
 
