@@ -169,9 +169,37 @@ body{
 .intro .left-col{ display:flex; flex-direction:column; gap:12px; }
 
 /* Section card base */
-.main-content section{ background: var(--card-glass); padding:20px; border-radius:12px; margin-bottom:20px; box-shadow:0 8px 28px rgba(20,30,60,0.04); }
+.main-content section{
+  /* segment container styling - visually separate each page area */
+  background: var(--card-glass);
+  padding:24px;
+  border-radius:14px;
+  margin-bottom:28px;
+  box-shadow:0 12px 36px rgba(20,30,60,0.05);
+  border: 1px solid rgba(25,40,80,0.04);
+}
 .section-title{ display:flex; align-items:center; gap:10px; font-size:1.2rem; }
 .section-title i{ color:var(--brand); font-size:1.1rem; }
+
+/* Visual separators between segments: thin accent line + spacing */
+.main-content > section:not(:first-child){
+  position:relative;
+  padding-top:30px;
+}
+.main-content > section:not(:first-child)::before{
+  content:'';
+  position:absolute;
+  left:24px;
+  right:24px;
+  top:8px;
+  height:3px;
+  background: linear-gradient(90deg, rgba(59,91,253,0.06), rgba(59,91,253,0.02));
+  border-radius:3px;
+  pointer-events:none;
+}
+
+/* Provide extra breathing for small cards inside each segment */
+.main-content > section .container-card, .main-content > section .card{ padding:12px; border-radius:10px; }
 
 /* Highlights turn into cards grid */
 .highlights ul{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
@@ -236,7 +264,5 @@ a:focus, .nav a:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4p
   .fade-in{ transition:none; transform:none; opacity:1; }
 }
   .main-content section{ padding:18px; }
-
-}
 
 
