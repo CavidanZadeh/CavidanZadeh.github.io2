@@ -174,7 +174,7 @@ body{
   background: var(--card-glass);
   padding:20px;
   border-radius:12px;
-  margin-bottom:20px;
+  margin-bottom:24px;
   box-shadow:0 8px 28px rgba(20,30,60,0.04);
   border: 1px solid rgba(25,40,80,0.04);
 }
@@ -272,5 +272,21 @@ a:focus, .nav a:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4p
   .fade-in{ transition:none; transform:none; opacity:1; }
 }
   .main-content section{ padding:18px; }
+
+/* Final polish: footer separation and small spacing improvements */
+.main-content{ padding-bottom:40px; }
+.site-footer{
+  /* Keep palette but give a subtle academic separation */
+  background: linear-gradient(180deg, rgba(247,248,251,0.9), rgba(242,244,247,0.98));
+  border-top: 1px solid rgba(25,40,80,0.06);
+  padding:28px 0;
+  color:var(--muted);
+}
+.footer-inner{ align-items:center; gap:18px; }
+
+@media (max-width:768px){
+  .site-footer{ padding:20px 0; }
+  .main-content{ padding-bottom:28px; }
+}
 
 
