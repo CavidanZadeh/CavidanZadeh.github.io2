@@ -26,9 +26,9 @@
     if (prefersReduced) return;
     var elems = document.querySelectorAll('.main-content section, .project-card, .timeline-item');
     elems.forEach(function(el){
-      // Don't set inline opacity/transform which can hide content if
-      // the observer doesn't fire. Only ensure a transition is present.
-      el.style.transition = el.style.transition || 'opacity 420ms ease, transform 420ms ease';
+      el.style.opacity = el.style.opacity || 0;
+      el.style.transform = el.style.transform || 'translateY(12px)';
+      el.style.transition = 'opacity 420ms ease, transform 420ms ease';
     });
 
     var io = new IntersectionObserver(function(entries){

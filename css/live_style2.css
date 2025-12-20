@@ -174,7 +174,7 @@ body{
   background: var(--card-glass);
   padding:20px;
   border-radius:12px;
-  margin-bottom:20px;
+  margin-bottom:24px;
   box-shadow:0 8px 28px rgba(20,30,60,0.04);
   border: 1px solid rgba(25,40,80,0.04);
 }
@@ -218,6 +218,11 @@ body{
 .project-card{ border-left:4px solid rgba(59,91,253,0.08); transition: transform .22s ease, box-shadow .22s ease; }
 .project-card:hover{ transform: translateY(-6px); box-shadow:0 18px 48px rgba(20,30,60,0.06); }
 
+/* Skill tags / chips */
+.tags{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.tag{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,247,250,0.95)); border:1px solid rgba(25,40,80,0.04); color:var(--text); font-weight:600; border-radius:999px; box-shadow:0 6px 18px rgba(20,30,60,0.04); font-size:0.95rem; }
+.tag:not(:first-child){ }
+
 /* Timeline */
 .timeline{ position:relative; padding-left:20px; }
 .timeline::before{ content:''; position:absolute; left:8px; top:0; bottom:0; width:2px; background: linear-gradient(180deg, rgba(225,231,255,1), rgba(225,231,255,1)); }
@@ -233,11 +238,27 @@ body{
 .footer-left p.statement{ margin:0 0 8px 0; color:var(--muted); font-size:0.95rem; }
 .footer-right a{ color:var(--brand-deep); }
 
+/* Footer link & icon polish: remove heavy native underline, stabilize visited state,
+   and provide subtle focus styles for accessibility. Conservative, palette-preserving. */
+.footer-link{
+  text-decoration:none;
+  color:var(--brand-deep);
+  font-weight:700;
+  display:inline-block;
+  padding-bottom:4px;
+  border-bottom:2px solid transparent;
+  transition: border-color .18s ease, color .18s ease;
+}
+.footer-link:visited{ color:var(--brand-deep); }
+.footer-link:hover, .footer-link:focus{ border-bottom-color: rgba(45,69,209,0.18); text-decoration:none; }
+.icon-link{ text-decoration:none; color:var(--brand-deep); display:inline-flex; align-items:center; justify-content:center; }
+.icon-link:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4px; border-radius:6px; }
+
 /* Focus states */
 a:focus, .nav a:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4px; }
 
 /* Fade-in-up reveal (used by js/ui.js) */
-.fade-in{ opacity:0; transform:translateY(18px); transition: opacity 520ms ease, transform 520ms cubic-bezier(.2,.9,.2,1); }
+.fade-in{ opacity:1; transform:none; transition: opacity 520ms ease, transform 520ms cubic-bezier(.2,.9,.2,1); }
 .fade-in.in-view{ opacity:1; transform:translateY(0); }
 
 /* Responsive tweaks */
@@ -267,5 +288,21 @@ a:focus, .nav a:focus{ outline:3px solid rgba(59,91,253,0.12); outline-offset:4p
   .fade-in{ transition:none; transform:none; opacity:1; }
 }
   .main-content section{ padding:18px; }
+
+/* Final polish: footer separation and small spacing improvements */
+.main-content{ padding-bottom:40px; }
+.site-footer{
+  /* Keep palette but give a subtle academic separation */
+  background: linear-gradient(180deg, rgba(247,248,251,0.9), rgba(242,244,247,0.98));
+  border-top: 1px solid rgba(25,40,80,0.06);
+  padding:28px 0;
+  color:var(--muted);
+}
+.footer-inner{ align-items:center; gap:18px; }
+
+@media (max-width:768px){
+  .site-footer{ padding:20px 0; }
+  .main-content{ padding-bottom:28px; }
+}
 
 
